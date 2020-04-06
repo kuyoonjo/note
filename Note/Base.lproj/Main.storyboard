@@ -56,52 +56,65 @@
                             </menuItem>
                             <menuItem title="File" id="dMs-cI-mzQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="File" id="bib-Uj-vzu">
+                                <menu key="submenu" title="File" autoenablesItems="NO" id="bib-Uj-vzu">
                                     <items>
                                         <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
                                                 <action selector="new:" target="Voe-Tx-rLC" id="sRv-sM-YW5"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Save" keyEquivalent="s" id="pxx-59-PXV">
+                                        <menuItem title="Save" enabled="NO" keyEquivalent="s" id="pxx-59-PXV">
                                             <connections>
                                                 <action selector="save:" target="Voe-Tx-rLC" id="9Ka-Ek-lgB"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                                        <menuItem title="Update" keyEquivalent="u" id="atk-Oq-FdG">
+                                        <menuItem title="Update" enabled="NO" keyEquivalent="u" id="atk-Oq-FdG">
                                             <connections>
                                                 <action selector="update:" target="Voe-Tx-rLC" id="PEC-oU-4TM"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Remove" keyEquivalent="r" id="VuI-hZ-QHc">
+                                        <menuItem title="Remove" enabled="NO" keyEquivalent="r" id="VuI-hZ-QHc">
                                             <connections>
                                                 <action selector="remove:" target="Voe-Tx-rLC" id="h8F-eW-hh7"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="30T-kZ-gAV"/>
-                                        <menuItem title="Order Up" keyEquivalent="u" id="Oev-Aa-J4U">
+                                        <menuItem title="Order Up" enabled="NO" keyEquivalent="u" id="Oev-Aa-J4U">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             <connections>
                                                 <action selector="orderUp:" target="Voe-Tx-rLC" id="mbW-iH-hU5"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Order Down" keyEquivalent="d" id="x8w-tp-ptA">
+                                        <menuItem title="Order Down" enabled="NO" keyEquivalent="d" id="x8w-tp-ptA">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             <connections>
                                                 <action selector="orderDown:" target="Voe-Tx-rLC" id="GzJ-SC-mwi"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Order Top" keyEquivalent="t" id="S4w-Az-B5Y">
+                                        <menuItem title="Order Top" enabled="NO" keyEquivalent="t" id="S4w-Az-B5Y">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             <connections>
                                                 <action selector="orderTop:" target="Voe-Tx-rLC" id="JEJ-Gs-sc8"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Order Bottom" keyEquivalent="b" id="ZRg-nj-lbN">
+                                        <menuItem title="Order Bottom" enabled="NO" keyEquivalent="b" id="ZRg-nj-lbN">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             <connections>
                                                 <action selector="orderBottom:" target="Voe-Tx-rLC" id="q9k-h3-d6d"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="AGB-nD-rd3"/>
+                                        <menuItem title="Reveal in Finder" enabled="NO" keyEquivalent="r" id="PXX-oC-g1I">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="revealInFinder:" target="Voe-Tx-rLC" id="4Uy-EY-NaJ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open in iTerm" keyEquivalent="i" id="dYy-hu-iuJ">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="openInITerm:" target="Voe-Tx-rLC" id="eJ3-07-DUg"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="UmP-kX-xuh"/>
@@ -388,7 +401,18 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Note" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Note" customModuleProvider="target">
+                    <connections>
+                        <outlet property="mbOrderBottom" destination="ZRg-nj-lbN" id="W4M-ow-2l8"/>
+                        <outlet property="mbOrderDown" destination="x8w-tp-ptA" id="X9r-sv-ipK"/>
+                        <outlet property="mbOrderTop" destination="S4w-Az-B5Y" id="gSv-dv-TuY"/>
+                        <outlet property="mbOrderUp" destination="Oev-Aa-J4U" id="gy3-8p-3f1"/>
+                        <outlet property="mbRemove" destination="VuI-hZ-QHc" id="Dq2-wi-oKf"/>
+                        <outlet property="mbRevealInFinder" destination="PXX-oC-g1I" id="2zT-Zk-dnD"/>
+                        <outlet property="mbSave" destination="pxx-59-PXV" id="cPR-lM-vEg"/>
+                        <outlet property="mbUpdate" destination="atk-Oq-FdG" id="In8-Gq-QNX"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

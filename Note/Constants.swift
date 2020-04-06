@@ -7,7 +7,7 @@
 //
 
 struct Constants {
-    static let root = "~/notes"
+    static let root = "~/.notes"
     static let listFile = "list.txt"
     static let noteExt = ".md"
 }

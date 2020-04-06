@@ -11,6 +11,14 @@ import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    @IBOutlet var mbSave: NSMenuItem!
+    @IBOutlet var mbUpdate: NSMenuItem!
+    @IBOutlet var mbRemove: NSMenuItem!
+    @IBOutlet var mbOrderUp: NSMenuItem!
+    @IBOutlet var mbOrderDown: NSMenuItem!
+    @IBOutlet var mbOrderTop: NSMenuItem!
+    @IBOutlet var mbOrderBottom: NSMenuItem!
+    @IBOutlet var mbRevealInFinder: NSMenuItem!
 
     var window: NSWindow!
     var settings = UserSettings()
@@ -90,7 +98,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.addButton(withTitle: "OK")
         alert.addButton(withTitle: "Cancel")
         let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-        txt.stringValue = ""
+        txt.stringValue = settings.notes[settings.selected!].name
         alert.accessoryView = txt
         let response: NSApplication.ModalResponse = alert.runModal()
 
@@ -161,6 +169,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             } catch {
                 print("Failed to order down")
             }
+        }
+    }
+    
+    @IBAction func revealInFinder(_ sender: Any) {
+        if settings.selected != nil {
+            NSWorkspace.shared.activateFileViewerSelecting([URL(fileURLWithPath: settings.currentNotePath)])
+        }
+    }
+    
+    @IBAction func openInITerm(_ sender: Any) {
+        if let script = Bundle.main.path(forResource: "iTerm", ofType: "scpt") {
+            let task = Process()
+            task.launchPath = "/usr/bin/osascript"
+            task.arguments = [script, "cd", NSString(string: Constants.root).expandingTildeInPath]
+            task.launch()
         }
     }
 

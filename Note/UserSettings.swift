@@ -26,8 +26,28 @@ class UserSettings: ObservableObject {
     
     var selected: Int? {
         didSet {
-            if selected != nil && selected != oldValue {
-                try! select(i: selected!)
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+            if selected != nil {
+                appDelegate.mbSave.isEnabled = true
+                appDelegate.mbUpdate.isEnabled = true
+                appDelegate.mbRemove.isEnabled = true
+                appDelegate.mbOrderUp.isEnabled = true
+                appDelegate.mbOrderDown.isEnabled = true
+                appDelegate.mbOrderTop.isEnabled = true
+                appDelegate.mbOrderBottom.isEnabled = true
+                appDelegate.mbRevealInFinder.isEnabled = true
+                if selected != oldValue {
+                    try! select(i: selected!)
+                }
+            } else {
+                appDelegate.mbSave.isEnabled = false
+                appDelegate.mbUpdate.isEnabled = false
+                appDelegate.mbRemove.isEnabled = false
+                appDelegate.mbOrderUp.isEnabled = false
+                appDelegate.mbOrderDown.isEnabled = false
+                appDelegate.mbOrderTop.isEnabled = false
+                appDelegate.mbOrderBottom.isEnabled = false
+                appDelegate.mbRevealInFinder.isEnabled = false
             }
         }
     }
@@ -92,7 +112,7 @@ class UserSettings: ObservableObject {
         } else {
             md = ""
             mdView = ""
-            selected = -1
+            selected = nil
         }
     }
     

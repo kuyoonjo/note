@@ -18,6 +18,7 @@
 		9AD93D8F243AD69700428447 /* dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 9AD93D8E243AD69700428447 /* dark.css */; };
 		9AD93D91243AD6B400428447 /* light.css in Resources */ = {isa = PBXBuildFile; fileRef = 9AD93D90243AD6B400428447 /* light.css */; };
 		9AD93D93243ADDE900428447 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D92243ADDE900428447 /* Constants.swift */; };
+		9AD93D95243B7AB500428447 /* iTerm.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 9AD93D94243B7AB500428447 /* iTerm.scpt */; };
 		9ADFA809243789F500CF17B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFA808243789F500CF17B8 /* AppDelegate.swift */; };
 		9ADFA80B243789F500CF17B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFA80A243789F500CF17B8 /* ContentView.swift */; };
 		9ADFA80D243789F600CF17B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADFA80C243789F600CF17B8 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		9AD93D8E243AD69700428447 /* dark.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = dark.css; sourceTree = "<group>"; };
 		9AD93D90243AD6B400428447 /* light.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = light.css; sourceTree = "<group>"; };
 		9AD93D92243ADDE900428447 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9AD93D94243B7AB500428447 /* iTerm.scpt */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTerm.scpt; sourceTree = "<group>"; };
 		9ADFA805243789F400CF17B8 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADFA808243789F500CF17B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ADFA80A243789F500CF17B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				9AD93D782438DDAE00428447 /* Markdown.swift */,
 				9AD93D8E243AD69700428447 /* dark.css */,
 				9AD93D90243AD6B400428447 /* light.css */,
+				9AD93D94243B7AB500428447 /* iTerm.scpt */,
 				9ADFA80C243789F600CF17B8 /* Assets.xcassets */,
 				9ADFA811243789F600CF17B8 /* Main.storyboard */,
 				9ADFA814243789F600CF17B8 /* Info.plist */,
@@ -300,6 +303,7 @@
 				9AD93D852439066D00428447 /* highlight.js in Resources */,
 				9ADFA813243789F600CF17B8 /* Main.storyboard in Resources */,
 				9ADFA810243789F600CF17B8 /* Preview Assets.xcassets in Resources */,
+				9AD93D95243B7AB500428447 /* iTerm.scpt in Resources */,
 				9ADFA80D243789F600CF17B8 /* Assets.xcassets in Resources */,
 				9AD93D87243908A100428447 /* highlight.css in Resources */,
 				9AD93D91243AD6B400428447 /* light.css in Resources */,
