@@ -13,28 +13,13 @@ struct WebView: NSViewRepresentable {
     var colorScheme: ColorScheme
     @Binding var md: String
 
-    func makeNSView(context: Context) -> MKView {
-        let view = MKView(frame: .zero)
-        view.navigationDelegate = view
+    func makeNSView(context: Context) -> WKWebView {
+        let view = WKWebView(frame: .zero)
         view.setValue(false, forKey: "drawsBackground")
         return view
     }
 
-    func updateNSView(_ nsView: MKView, context: Context) {
-//        let md = """
-//## Hi Note
-//
-//|  表头   | 表头  |
-//|  ----  | ----  |
-//| 单元格  | 单元格 |
-//| 单元格  | 单元格 |
-//
-//
-//```typescript
-//console.log(\"ok\");
-//
-//```
-//"""
+    func updateNSView(_ nsView: WKWebView, context: Context) {
         let html = Markdown(colorScheme: self.colorScheme).parse(md: md)
         nsView.loadHTMLString(html, baseURL: Bundle.main.bundleURL)
     }

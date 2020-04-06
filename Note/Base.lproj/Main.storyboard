@@ -69,9 +69,39 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
+                                        <menuItem title="Update" keyEquivalent="u" id="atk-Oq-FdG">
+                                            <connections>
+                                                <action selector="update:" target="Voe-Tx-rLC" id="PEC-oU-4TM"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Remove" keyEquivalent="r" id="VuI-hZ-QHc">
                                             <connections>
                                                 <action selector="remove:" target="Voe-Tx-rLC" id="h8F-eW-hh7"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="30T-kZ-gAV"/>
+                                        <menuItem title="Order Up" keyEquivalent="u" id="Oev-Aa-J4U">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <connections>
+                                                <action selector="orderUp:" target="Voe-Tx-rLC" id="mbW-iH-hU5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Order Down" keyEquivalent="d" id="x8w-tp-ptA">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <connections>
+                                                <action selector="orderDown:" target="Voe-Tx-rLC" id="GzJ-SC-mwi"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Order Top" keyEquivalent="t" id="S4w-Az-B5Y">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <connections>
+                                                <action selector="orderTop:" target="Voe-Tx-rLC" id="JEJ-Gs-sc8"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Order Bottom" keyEquivalent="b" id="ZRg-nj-lbN">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <connections>
+                                                <action selector="orderBottom:" target="Voe-Tx-rLC" id="q9k-h3-d6d"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="UmP-kX-xuh"/>

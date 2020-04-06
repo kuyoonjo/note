@@ -13,11 +13,15 @@ struct Markdown {
     var colorScheme: ColorScheme
     var highlightjs: String
     var highlightcss: String
+    var dark: String
+    var light: String
     
     init(colorScheme: ColorScheme) {
         self.colorScheme = colorScheme
         self.highlightjs = ""
         self.highlightcss = ""
+        self.dark = ""
+        self.light = ""
         if let js = Bundle.main.path(forResource: "highlight", ofType: "js") {
             let contents = try! String(contentsOfFile: js)
             self.highlightjs = "<script>" + contents + """
@@ -29,6 +33,14 @@ hljs.initHighlightingOnLoad();
             let contents = try! String(contentsOfFile: css)
             self.highlightcss = "<style>" + contents + "</style>"
         }
+        if let dark = Bundle.main.path(forResource: "dark", ofType: "css") {
+            let contents = try! String(contentsOfFile: dark)
+            self.dark = "<style>" + contents + "</style>"
+        }
+        if let light = Bundle.main.path(forResource: "light", ofType: "css") {
+            let contents = try! String(contentsOfFile: light)
+            self.light = "<style>" + contents + "</style>"
+        }
     }
 
     func parse(md: String) -> String {
@@ -39,9 +51,9 @@ hljs.initHighlightingOnLoad();
         
         switch colorScheme {
         case .dark:
-            html = MdTheme.Dark.rawValue + highlightcss + html + highlightjs
+            html = dark + highlightcss + html + highlightjs
         default:
-            html = MdTheme.Light.rawValue + highlightcss + html + highlightjs
+            html = light + highlightcss + html + highlightjs
         }
         return html
     }

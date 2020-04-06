@@ -34,6 +34,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
 
     
     @IBAction func toggleEditor(_ sender: Any) {
@@ -48,8 +52,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
-        if settings.selected.count > 0 {
-            try! settings.md.write(to: URL(fileURLWithPath: settings.filePath), atomically: true, encoding: .utf8)
+        if settings.selected != nil {
+            do {
+                try settings.saveNote()
+            } catch {
+                print("Failed to save note")
+            }
         }
     }
     
@@ -66,20 +74,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if response == NSApplication.ModalResponse.alertFirstButtonReturn {
             if txt.stringValue.count > 0 {
-                let p1 = "~/.notes/" + txt.stringValue + ".md"
-                let p = NSString(string: p1).expandingTildeInPath
                 do {
-                    try txt.stringValue.write(to: URL(fileURLWithPath: p), atomically: true, encoding: .utf8)
-                    settings.notes.append(txt.stringValue + ".md")
+                    try settings.createNote(name: txt.stringValue)
                 } catch {
-                    print("Failed to create")
+                    print("Failed to create note")
+                }
+            }
+        }
+    }
+    
+    @IBAction func update(_ sender: Any) {
+        let alert = NSAlert()
+        alert.messageText = "Note Name"
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+        txt.stringValue = ""
+        alert.accessoryView = txt
+        let response: NSApplication.ModalResponse = alert.runModal()
+
+        if response == NSApplication.ModalResponse.alertFirstButtonReturn {
+            if txt.stringValue.count > 0 {
+                do {
+                    try settings.updateNote(name: txt.stringValue)
+                } catch {
+                    print("Failed to update note")
                 }
             }
         }
     }
     
     @IBAction func remove(_ sender: Any) {
-        if settings.selected.count > 0 {
+        if settings.selected != nil {
             let alert = NSAlert()
             alert.messageText = "Are you sure what you are doing?"
             alert.alertStyle = .critical
@@ -89,14 +116,50 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             if response == NSApplication.ModalResponse.alertFirstButtonReturn {
                 do {
-                    try FileManager.default.removeItem(atPath: settings.filePath)
-                    settings.notes.removeAll { $0 == settings.selected }
-                    settings.md = ""
-                    settings.mdView = ""
-                    settings.selected = ""
+                    try settings.removeNote()
                 } catch {
-                    print("Failed to remove")
+                    print("Failed to remove note")
                 }
+            }
+        }
+    }
+    
+    @IBAction func orderTop(_ sender: Any) {
+        if settings.selected != nil {
+            do {
+                try settings.orderTop()
+            } catch {
+                print("Failed to order top")
+            }
+        }
+    }
+    
+    @IBAction func orderUp(_ sender: Any) {
+        if settings.selected != nil {
+            do {
+                try settings.orderUp()
+            } catch {
+                print("Failed to order up")
+            }
+        }
+    }
+    
+    @IBAction func orderBottom(_ sender: Any) {
+        if settings.selected != nil {
+            do {
+                try settings.orderBottom()
+            } catch {
+                print("Failed to order bottom")
+            }
+        }
+    }
+    
+    @IBAction func orderDown(_ sender: Any) {
+        if settings.selected != nil {
+            do {
+                try settings.orderDown()
+            } catch {
+                print("Failed to order down")
             }
         }
     }

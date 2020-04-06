@@ -16,33 +16,28 @@ struct ContentView: View {
 
     var body: some View {
         HSplitView {
-            List(0 ..< settings.notes.count, id: \.self) { i in
-                if self.settings.notes[i] == self.settings.selected {
+            List(0 ..< settings.notes.count, id: \.self, selection: $settings.selected) { i in
+                if i == self.settings.selected {
                     Text(self.settings.notes[i]).bold()
                 } else {
                     Text(self.settings.notes[i])
-                        .onTapGesture {
-                            self.settings.selected = self.settings.notes[i]
-                            self.settings.md = try! String(contentsOfFile: self.settings.filePath, encoding: String.Encoding.utf8)
-                                self.settings.mdView = self.settings.md
-                    }
                 }
             }
             .frame(width: 200)
             .padding(EdgeInsets())
+            .listStyle(SidebarListStyle())
 
             if settings.editorOn {
                 MacEditorTextView(text: $settings.md)
                     .frame(width: 350)
             }
+
             GeometryReader { g in
                 ScrollView {
                     WebView(colorScheme: self.colorScheme, md: self.$settings.mdView).tabItem {
                         Text("Browser")
                     }
                     .frame(height: g.size.height)
-                    .tag(2)
-
                 }.frame(height: g.size.height)
             }
             

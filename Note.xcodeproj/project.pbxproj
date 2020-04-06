@@ -11,12 +11,13 @@
 		9AD93D752438CB8600428447 /* Down.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD93D732438CB8600428447 /* Down.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AD93D772438DD1100428447 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D762438DD1100428447 /* WebView.swift */; };
 		9AD93D792438DDAE00428447 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D782438DDAE00428447 /* Markdown.swift */; };
-		9AD93D7B2438DF1000428447 /* MdTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D7A2438DF1000428447 /* MdTheme.swift */; };
-		9AD93D812438F92F00428447 /* MKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D802438F92F00428447 /* MKView.swift */; };
 		9AD93D852439066D00428447 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = 9AD93D842439066D00428447 /* highlight.js */; };
 		9AD93D87243908A100428447 /* highlight.css in Resources */ = {isa = PBXBuildFile; fileRef = 9AD93D86243908A100428447 /* highlight.css */; };
 		9AD93D892439808500428447 /* MacEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D882439808500428447 /* MacEditorTextView.swift */; };
 		9AD93D8B2439E29900428447 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D8A2439E29900428447 /* UserSettings.swift */; };
+		9AD93D8F243AD69700428447 /* dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 9AD93D8E243AD69700428447 /* dark.css */; };
+		9AD93D91243AD6B400428447 /* light.css in Resources */ = {isa = PBXBuildFile; fileRef = 9AD93D90243AD6B400428447 /* light.css */; };
+		9AD93D93243ADDE900428447 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD93D92243ADDE900428447 /* Constants.swift */; };
 		9ADFA809243789F500CF17B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFA808243789F500CF17B8 /* AppDelegate.swift */; };
 		9ADFA80B243789F500CF17B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFA80A243789F500CF17B8 /* ContentView.swift */; };
 		9ADFA80D243789F600CF17B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADFA80C243789F600CF17B8 /* Assets.xcassets */; };
@@ -61,12 +62,13 @@
 		9AD93D732438CB8600428447 /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/Mac/Down.framework; sourceTree = "<group>"; };
 		9AD93D762438DD1100428447 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		9AD93D782438DDAE00428447 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		9AD93D7A2438DF1000428447 /* MdTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdTheme.swift; sourceTree = "<group>"; };
-		9AD93D802438F92F00428447 /* MKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKView.swift; sourceTree = "<group>"; };
 		9AD93D842439066D00428447 /* highlight.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
 		9AD93D86243908A100428447 /* highlight.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = highlight.css; sourceTree = "<group>"; };
 		9AD93D882439808500428447 /* MacEditorTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditorTextView.swift; sourceTree = "<group>"; };
 		9AD93D8A2439E29900428447 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		9AD93D8E243AD69700428447 /* dark.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = dark.css; sourceTree = "<group>"; };
+		9AD93D90243AD6B400428447 /* light.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = light.css; sourceTree = "<group>"; };
+		9AD93D92243ADDE900428447 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9ADFA805243789F400CF17B8 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADFA808243789F500CF17B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ADFA80A243789F500CF17B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,14 +145,15 @@
 			children = (
 				9ADFA808243789F500CF17B8 /* AppDelegate.swift */,
 				9AD93D8A2439E29900428447 /* UserSettings.swift */,
+				9AD93D92243ADDE900428447 /* Constants.swift */,
 				9ADFA80A243789F500CF17B8 /* ContentView.swift */,
 				9AD93D762438DD1100428447 /* WebView.swift */,
 				9AD93D882439808500428447 /* MacEditorTextView.swift */,
-				9AD93D802438F92F00428447 /* MKView.swift */,
 				9AD93D842439066D00428447 /* highlight.js */,
 				9AD93D86243908A100428447 /* highlight.css */,
 				9AD93D782438DDAE00428447 /* Markdown.swift */,
-				9AD93D7A2438DF1000428447 /* MdTheme.swift */,
+				9AD93D8E243AD69700428447 /* dark.css */,
+				9AD93D90243AD6B400428447 /* light.css */,
 				9ADFA80C243789F600CF17B8 /* Assets.xcassets */,
 				9ADFA811243789F600CF17B8 /* Main.storyboard */,
 				9ADFA814243789F600CF17B8 /* Info.plist */,
@@ -299,6 +302,8 @@
 				9ADFA810243789F600CF17B8 /* Preview Assets.xcassets in Resources */,
 				9ADFA80D243789F600CF17B8 /* Assets.xcassets in Resources */,
 				9AD93D87243908A100428447 /* highlight.css in Resources */,
+				9AD93D91243AD6B400428447 /* light.css in Resources */,
+				9AD93D8F243AD69700428447 /* dark.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,11 +393,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD93D892439808500428447 /* MacEditorTextView.swift in Sources */,
-				9AD93D812438F92F00428447 /* MKView.swift in Sources */,
 				9AD93D792438DDAE00428447 /* Markdown.swift in Sources */,
 				9AD93D772438DD1100428447 /* WebView.swift in Sources */,
-				9AD93D7B2438DF1000428447 /* MdTheme.swift in Sources */,
 				9AD93D8B2439E29900428447 /* UserSettings.swift in Sources */,
+				9AD93D93243ADDE900428447 /* Constants.swift in Sources */,
 				9ADFA80B243789F500CF17B8 /* ContentView.swift in Sources */,
 				9ADFA809243789F500CF17B8 /* AppDelegate.swift in Sources */,
 			);
