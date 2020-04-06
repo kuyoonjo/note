@@ -1,0 +1,2 @@
+github "HashimPhilips/Down-gfm"
+github "SwiftyJSON/SwiftyJSON" ~> 4.0
