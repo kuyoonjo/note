@@ -14,10 +14,11 @@ struct MacEditorTextView: NSViewRepresentable {
 
     var onEditingChanged    : () -> Void           = {}
     func onCommit() {
-        settings.mdView = text
+//        settings.mdView = text
     }
     func onTextChange() {
         settings.mdView = text
+        settings.emitChanged()
     }
     
     func makeCoordinator() -> Coordinator {

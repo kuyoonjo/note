@@ -18,9 +18,17 @@ struct ContentView: View {
         HSplitView {
             List(0 ..< settings.notes.count, id: \.self, selection: $settings.selected) { i in
                 if i == self.settings.selected {
-                    Text(self.settings.notes[i]).bold()
+                    if self.settings.notes[i].changed {
+                        Text(self.settings.notes[i].name).bold().italic()
+                    } else {
+                        Text(self.settings.notes[i].name).bold()
+                    }
                 } else {
-                    Text(self.settings.notes[i])
+                    if self.settings.notes[i].changed {
+                        Text(self.settings.notes[i].name).italic()
+                    } else {
+                        Text(self.settings.notes[i].name)
+                    }
                 }
             }
             .frame(width: 200)

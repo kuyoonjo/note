@@ -9,6 +9,10 @@
 import Combine
 import SwiftUI
 
+struct Note {
+    var name: String
+    var changed: Bool
+}
 
 enum USError: Error {
     case NoSelection
@@ -18,7 +22,7 @@ class UserSettings: ObservableObject {
     @Published var editorOn: Bool = false
     @Published var md: String = ""
     @Published var mdView: String = ""
-    @Published var notes: Array<String> = []
+    @Published var notes: Array<Note> = []
     
     var selected: Int? {
         didSet {
@@ -32,7 +36,7 @@ class UserSettings: ObservableObject {
 
     var currentNotePath: String {
         get {
-            return NSString(string: Constants.root + "/" + notes[selected!] + Constants.noteExt).expandingTildeInPath
+            return NSString(string: Constants.root + "/" + notes[selected!].name + Constants.noteExt).expandingTildeInPath
         }
     }
     
@@ -51,6 +55,7 @@ class UserSettings: ObservableObject {
         if let str = try? String(contentsOfFile: listFilePath) {
             notes = str.components(separatedBy: "\n")
                 .filter({ $0.count > 0 })
+                .map({ Note(name: $0, changed: false) })
         } else {
             do {
                 try saveList()
@@ -61,7 +66,7 @@ class UserSettings: ObservableObject {
     }
     
     func saveList() throws {
-        let str = notes.joined(separator: "\n")
+        let str = notes.map({ $0.name }).joined(separator: "\n")
         print(listFilePath)
         try str.write(toFile: listFilePath, atomically: true, encoding: .utf8)
     }
@@ -70,7 +75,7 @@ class UserSettings: ObservableObject {
         let p1 = Constants.root + "/" + name + Constants.noteExt
         let p = NSString(string: p1).expandingTildeInPath
         try name.write(to: URL(fileURLWithPath: p), atomically: true, encoding: .utf8)
-        notes.insert(name, at: 0)
+        notes.insert(Note(name: name, changed: false), at: 0)
         try saveList()
         try select(i: 0)
     }
@@ -80,7 +85,7 @@ class UserSettings: ObservableObject {
             throw USError.NoSelection
         }
         try FileManager.default.removeItem(atPath: currentNotePath)
-        notes.removeAll { $0 == notes[selected!] }
+        notes.removeAll { $0.name == notes[selected!].name }
         try saveList()
         if notes.count > 0 {
             try select(i: 0)
@@ -96,7 +101,7 @@ class UserSettings: ObservableObject {
             throw USError.NoSelection
         }
         let originalPath = currentNotePath
-        notes[selected!] = name
+        notes[selected!].name = name
         try saveList()
         try FileManager.default.moveItem(atPath: originalPath, toPath: currentNotePath)
     }
@@ -106,6 +111,7 @@ class UserSettings: ObservableObject {
             throw USError.NoSelection
         }
         try md.write(toFile: currentNotePath, atomically: true, encoding: .utf8)
+        notes[selected!].changed = false
     }
     
     func select(i: Int) throws {
@@ -143,7 +149,7 @@ class UserSettings: ObservableObject {
         if let i = selected {
             if i > 0 {
                 let note = notes[i]
-                notes.removeAll { $0 == note }
+                notes.removeAll { $0.name == note.name }
                 notes.insert(note, at: 0)
                 try saveList()
                 selected = 0
@@ -155,11 +161,17 @@ class UserSettings: ObservableObject {
         if let i = selected {
             if i >= 0 && i < notes.count - 1 {
                 let note = notes[i]
-                notes.removeAll { $0 == note }
+                notes.removeAll { $0.name == note.name }
                 notes.append(note)
                 try saveList()
                 selected = notes.count - 1
             }
+        }
+    }
+    
+    func emitChanged() {
+        if let i = selected {
+            notes[i].changed = true
         }
     }
 }
