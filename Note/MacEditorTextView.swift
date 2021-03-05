@@ -74,6 +74,10 @@ extension MacEditorTextView {
             self.parent.text = textView.string
             self.parent.onCommit()
         }
+        
+//        func undoManager(for view: NSTextView) -> UndoManager? {
+//            <#code#>
+//        }
     }
 }
 
@@ -143,6 +147,8 @@ final class CustomTextView: NSView {
         textView.minSize                 = NSSize(width: 0, height: contentSize.height)
         textView.textColor               = NSColor.labelColor
         textView.textContainerInset = NSSize(width: 16, height: 16)
+        
+        textView.allowsUndo = true
     
         return textView
     }()
